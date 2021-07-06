@@ -45,6 +45,60 @@
   {% include 'social-meta-tags' %}
 
   {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
+  <script src="<a target="_blank" data-stringify-link="https://getmulberry.com/plugin/static/js/mulberry.js" delay="150" data-sk="tooltip_parent" href="https://getmulberry.com/plugin/static/js/mulberry.js" rel="noopener noreferrer">https://getmulberry.com/plugin/static/js/mulberry.js</a>"></script>  <script>
+  document.addEventListener('mulberry-shopify:loaded', async () => {
+    if (window.location.href.indexOf('/cart') != -1) {
+      await mulberryShop.cart.init();
+      mulberryShop.cart.render();
+    }
+  });
+
+  var theme = {
+    breakpoints: {
+      medium: 750,
+      large: 990,
+      widescreen: 1400
+    },
+    strings: {
+      addToCart: {{ 'products.product.add_to_cart' | t | json }},
+      soldOut: {{ 'products.product.sold_out' | t | json }},
+      unavailable: {{ 'products.product.unavailable' | t | json }},
+      regularPrice: {{ 'products.product.regular_price' | t | json }},
+      salePrice: {{
+      'products.product.sale_price' | t | json }},
+      sale: {{ 'products.product.on_sale' | t | json }},
+      showMore: {{ 'general.filters.show_more' | t | json }},
+      showLess: {{ 'general.filters.show_less' | t | json }},
+      addressError: {{ 'sections.map.address_error' | t | json }},
+      addressNoResults: {{ 'sections.map.address_no_results' | t | json }},
+      addressQueryLimit: {{ 'sections.map.address_query_limit_html' | t | json }},
+      authError: {{ 'sections.map.auth_error_html' | t | json }},
+      newWindow: {{ 'general.accessibility.link_messages.new_window' | t | json }},
+      external: {{ 'general.accessibility.link_messages.external' | t | json }},
+      newWindowExternal: {{ 'general.accessibility.link_messages.new_window_and_external' | t | json }},
+      removeLabel: {{ 'cart.label.remove' | t: product: '[product]' | json }},
+      update: {{ 'cart.label.update' | t | json }},
+      quantity: {{ 'cart.label.quantity' | t | json }},
+      discountedTotal: {{ 'cart.label.discounted_total' | t | json }},
+      regularTotal: {{ 'cart.label.regular_total' | t | json }},
+      priceColumn: {{ 'cart.label.price_column' | t | json }},
+      quantityMinimumMessage: {{ 'products.product.quantity_minimum_message' | t | json }},
+      cartError: {{ 'cart.general.cart_error' | t | json }},
+      removedItemMessage: {{ 'cart.general.removed_item_html' | t: quantity: '[quantity]', link: '[link]' | json }},
+      unitPrice: {{ 'products.product.unit_price_label' | t | json }},
+      unitPriceSeparator: {{ 'general.accessibility.unit_price_separator' | t | json }},
+      oneCartCount: {{ 'cart.popup.cart_count' | t: count: 1 | json }},
+      otherCartCount: {{ 'cart.popup.cart_count' | t: count: '[count]' | json }},
+      quantityLabel: {{ 'cart.popup.quantity_label' | t: quantity_count: '[count]' | json }}
+    },
+    moneyFormat: {{ shop.money_format | json }},
+    moneyFormatWithCurrency: {{ shop.money_with_currency_format | json }}
+  }
+
+  document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+  </script>
+
+
 
 
   {%- if request.page_type contains 'customers/' -%}
