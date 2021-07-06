@@ -215,7 +215,7 @@
         "type": "collection",
         "settings": {
           "title": "Shop The Studios",
-          "collection": "studios-prod",
+          "collection": "frontpage",
           "grid": 2,
           "rows": 2,
           "show_vendor": false,
@@ -250,7 +250,7 @@
         "type": "collection",
         "settings": {
           "title": "SHOP ACCESSORIES BUNDLES",
-          "collection": "bundles",
+          "collection": "the-bundles",
           "grid": 3,
           "rows": 1,
           "show_vendor": false,
