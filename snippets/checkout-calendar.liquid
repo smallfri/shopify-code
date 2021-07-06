@@ -1,0 +1,82 @@
+<!-- THIS FILE IS AUTO-GENERATED. DO NOT EDIT -->
+
+<!--favicon.ico error fix :-->
+<link rel="shortcut icon" href="">
+<!--From Chrome 2020 this is the solution :-->
+<link rel="shortcut icon" href="#">
+
+<!-- begin Calendar -->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.4/moment.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<link rel="dns-prefetch" href="https://fonts.shopifycdn.com">
+<link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+<link rel="preload" href="https://fonts.shopifycdn.com/oswald/oswald_n4.a5ee385bde39969d807f7f1297bf51d73fbf3c1e.woff2?valid_until=MTYyMDgzNjUxNw&amp;hmac=55c282ac47a112774b0701e48f05f2a8d4ca750ac100dcfe2dc105aaac742325" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="https://fonts.shopifycdn.com/oswald/oswald_n7.f71e68b857a7b8128a7629452b9c6bf9468356a7.woff2?valid_until=MTYyMDgzNjUxNw&amp;hmac=2ee876b8fe227341fd4f728a6fd49559897eafb6ba2030aa40f3a6eadd037fcf" as="font" type="font/woff2" crossorigin>
+<style>
+    @font-face {
+        font-family: "Oswald";
+        font-style: normal;
+        font-weight: 400;
+        src: local('Oswald Regular'), local('Oswald-Regular'), url(https://fonts.shopifycdn.com/oswald/oswald_n4.a5ee385bde39969d807f7f1297bf51d73fbf3c1e.woff2?valid_until=MTYyMDgzNjUxNw&hmac=55c282ac47a112774b0701e48f05f2a8d4ca750ac100dcfe2dc105aaac742325) format('woff2'),url(https://fonts.shopifycdn.com/oswald/oswald_n4.8f3e284746fbc2d29e34993609c51fdc432b0b24.woff?valid_until=MTYyMDgzNjUxNw&hmac=af4ef4bb2f5f44ed2b1619c936a417b414aac719df6a5de15c4380f0f5e2ce13) format('woff');
+    }
+    @font-face {
+        font-family: "Oswald";
+        font-style: normal;
+        font-weight: 700;
+        src: local('Oswald Bold'), local('Oswald-Bold'), url(https://fonts.shopifycdn.com/oswald/oswald_n7.f71e68b857a7b8128a7629452b9c6bf9468356a7.woff2?valid_until=MTYyMDgzNjUxNw&hmac=2ee876b8fe227341fd4f728a6fd49559897eafb6ba2030aa40f3a6eadd037fcf) format('woff2'),url(https://fonts.shopifycdn.com/oswald/oswald_n7.2767cc6e7cfc91284caa2c06eb07eca21a27681e.woff?valid_until=MTYyMDgzNjUxNw&hmac=3cf75a8c17dc9dfa61211266a571e8692496db02487e48c108bb88ba44b8474a) format('woff');
+    }
+</style>
+
+<script src="https://forme-beta-order-status.web.app/js/global.js"></script>
+<script src="https://forme-beta-order-status.web.app/js/apiCalls.js"></script>
+<script src="https://forme-beta-order-status.web.app/js/generalUtil.js"></script>
+<script src="https://forme-beta-order-status.web.app/js/metafieldUtil.js"></script>
+<script src="https://forme-beta-order-status.web.app/js/questionnaire.js"></script>
+<script src="https://forme-beta-order-status.web.app/js/uiMgr.js"></script>
+<script src="https://forme-beta-order-status.web.app/js/calendarUi.js"></script>
+<script src="https://forme-beta-order-status.web.app/js/varCfg.js"></script>
+<script src="https://forme-beta-order-status.web.app/js/datePicker.js"></script>
+
+
+<script>
+    $(".content-box:contains('Your order is confirmed')").remove();
+        $(".content-box:contains('Order updates')").remove();
+        if( document.getElementsByClassName('map')[0] ) {
+            document.getElementsByClassName('map')[0].parentNode.remove();
+        }
+
+    let email = '{{ checkout.customer.email }}';
+    let emailArray = email.split('@');
+    let domain = emailArray[1];
+    if(domain === 'formelife.com')
+    {
+        $(document).ready(function () {
+            Global.orderId = '{{ order.id }}'; // shopify runtime token
+            console.log(`[(document).ready()] Global.orderId: ${Global.orderId}`);
+            Global.orderName = '{{ order.name }}'; // shopify runtime token
+            console.log(`[(document).ready()] Global.orderName: ${Global.orderName}`);
+            Global.runMuleOrderScript();
+            // $('.content-box__row--no-padding').remove();
+            $(".content-box:contains('Your order is confirmed')").remove();
+            $(".content-box:contains('Order updates')").remove();
+            if( document.getElementsByClassName('map')[0] ) {
+                document.getElementsByClassName('map')[0].parentNode.remove();
+            }
+        });
+    }
+</script>
+
+
