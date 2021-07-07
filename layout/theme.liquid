@@ -28,7 +28,7 @@
     {%- if current_page != 1 -%}
       &ndash; {{ 'general.meta.page' | t: page: current_page }}
     {%- endif -%}
-    {%- assign escaped_page_title = page_title | escape -%}
+  {%- assign escaped_page_title = page_title | escape -%}
     {%- unless escaped_page_title contains shop.name -%}
       &ndash; {{ shop.name }}
     {%- endunless -%}
@@ -37,22 +37,25 @@
 
   {%- if page_description -%}
     {%- comment %}<locksmith:6620>{% endcomment -%}
-      {%- capture var %}{% include 'locksmith-variables', variable: 'transparent', hiding_scope: 'resource' %}{% endcapture %}{% if var == 'true' %}<meta name="description" content="{{ page_description | escape }}">{% endif -%}
-      {%- comment %}original: <meta name="description" content="{{ page_description | escape }}">{%- endcomment %}
+    {%- capture var %}{% include 'locksmith-variables', variable: 'transparent', hiding_scope: 'resource' %}{% endcapture %}{% if var == 'true' %}<meta name="description" content="{{ page_description | escape }}">{% endif -%}
+    {%- comment %}original: <meta name="description" content="{{ page_description | escape }}">{%- endcomment %}
     {%- comment %}</locksmith:6620>{% endcomment -%}
   {%- endif -%}
 
   {% include 'social-meta-tags' %}
 
   {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
- <script src="<a target=_blank" data-stringify-link="https://getmulberry.com/plugin/static/js/mulberry.js" delay="150" data-sk="tooltip_parent" href="https://getmulberry.com/plugin/static/js/mulberry.js" rel="noopener noreferrer">https://getmulberry.com/plugin/static/js/mulberry.js</a>"></script>  <script>
-  document.addEventListener('mulberry-shopify:loaded', async () => {
-    if (window.location.href.indexOf('/cart') != -1) {
-      await mulberryShop.cart.init();
-      mulberryShop.cart.render();
-    }
-  });
-    
+
+  <script delay="150" data-sk="tooltip_parent" href="https://getmulberry.com/plugin/static/js/mulberry.js" rel="noopener noreferrer"></script>
+
+  <script async="async">
+    document.addEventListener('mulberry-shopify:loaded', async () => {
+      if (window.location.href.indexOf('/cart') != -1) {
+        await mulberryShop.cart.init();
+        mulberryShop.cart.render();
+      }
+    });
+
     var theme = {
       breakpoints: {
         medium: 750,
@@ -65,7 +68,7 @@
         unavailable: {{ 'products.product.unavailable' | t | json }},
         regularPrice: {{ 'products.product.regular_price' | t | json }},
         salePrice: {{
-          'products.product.sale_price' | t | json }},
+        'products.product.sale_price' | t | json }},
         sale: {{ 'products.product.on_sale' | t | json }},
         showMore: {{ 'general.filters.show_more' | t | json }},
         showLess: {{ 'general.filters.show_less' | t | json }},
@@ -96,7 +99,9 @@
     }
 
     document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
+
   </script>
+
 
   {%- if request.page_type contains 'customers/' -%}
     <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
@@ -108,81 +113,81 @@
 
   {{ content_for_header }}{% include 'cookie-body' %}
 
-<!-- Start of Littledata - Fix Google Analytics Script-->
-{% include 'LittledataLayer' %}
-<!-- End of Littledata - Fix Google Analytics Script -->
-{% include 'scapp-customerinfo' %}
-<!-- ShareASale script -->
-<script src="https://www.dwin1.com/19038.js" type="text/javascript" defer="defer"></script>
-<style>
-  @media (min-width: 1000px) {
-    .page--banner .banner {
-      padding-top: 4em !important;
-      padding-bottom: 4em !important;
+  <!-- Start of Littledata - Fix Google Analytics Script-->
+  {% include 'LittledataLayer' %}
+  <!-- End of Littledata - Fix Google Analytics Script -->
+  {% include 'scapp-customerinfo' %}
+  <!-- ShareASale script -->
+  <script src="https://www.dwin1.com/19038.js" type="text/javascript" defer="defer"></script>
+  <style>
+    @media (min-width: 1000px) {
+      .page--banner .banner {
+        padding-top: 4em !important;
+        padding-bottom: 4em !important;
+      }
     }
-  }
-</style>
+  </style>
 
-<!-- Affirm -->
-<script>
-_affirm_config = {
-   public_api_key:  "1UVF3U37809XCSVP",
-   script:          "https://cdn1.affirm.com/js/v2/affirm.js"
-};
-(function(l,g,m,e,a,f,b){var d,c=l[m]||{},h=document.createElement(f),n=document.getElementsByTagName(f)[0],k=function(a,b,c){return function(){a[b]._.push([c,arguments])}};c[e]=k(c,e,"set");d=c[e];c[a]={};c[a]._=[];d._=[];c[a][b]=k(c,a,b);a=0;for(b="set add save post open empty reset on off trigger ready setProduct".split(" ");a<b.length;a++)d[b[a]]=k(c,e,b[a]);a=0;for(b=["get","token","url","items"];a<b.length;a++)d[b[a]]=function(){};h.async=!0;h.src=g[f];n.parentNode.insertBefore(h,n);delete g[f];d(g);l[m]=c})(window,_affirm_config,"affirm","checkout","ui","script","ready");
-// Use your live public API Key and https://cdn1.affirm.com/js/v2/affirm.js script to point to Affirm production environment.
-</script>
-<!-- End Affirm -->
+  <!-- Affirm -->
+  <script>
+    _affirm_config = {
+      public_api_key:  "1UVF3U37809XCSVP",
+      script:          "https://cdn1.affirm.com/js/v2/affirm.js"
+    };
+    (function(l,g,m,e,a,f,b){var d,c=l[m]||{},h=document.createElement(f),n=document.getElementsByTagName(f)[0],k=function(a,b,c){return function(){a[b]._.push([c,arguments])}};c[e]=k(c,e,"set");d=c[e];c[a]={};c[a]._=[];d._=[];c[a][b]=k(c,a,b);a=0;for(b="set add save post open empty reset on off trigger ready setProduct".split(" ");a<b.length;a++)d[b[a]]=k(c,e,b[a]);a=0;for(b=["get","token","url","items"];a<b.length;a++)d[b[a]]=function(){};h.async=!0;h.src=g[f];n.parentNode.insertBefore(h,n);delete g[f];d(g);l[m]=c})(window,_affirm_config,"affirm","checkout","ui","script","ready");
+    // Use your live public API Key and https://cdn1.affirm.com/js/v2/affirm.js script to point to Affirm production environment.
+  </script>
+  <!-- End Affirm -->
 </head>
 
 <body class="template-{{ request.page_type | handle }}">
 
-  <a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
+<a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
 
-  <div id="SearchDrawer" class="search-bar drawer drawer--top" role="dialog" aria-modal="true" aria-label="{{ 'general.search.placeholder' | t }}">
-    <div class="search-bar__table">
-      <div class="search-bar__table-cell search-bar__form-wrapper">
-        <form class="search search-bar__form" action="{{ routes.search_url }}" method="get" role="search">
-          <input class="search__input search-bar__input" type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" aria-label="{{ 'general.search.placeholder' | t }}">
-          <button class="search-bar__submit search__submit btn--link" type="submit">
-            {% include 'icon-search' %}
-            <span class="icon__fallback-text">{{ 'general.search.submit' | t }}</span>
-          </button>
-        </form>
-      </div>
-      <div class="search-bar__table-cell text-right">
-        <button type="button" class="btn--link search-bar__close js-drawer-close">
-          {% include 'icon-close' %}
-          <span class="icon__fallback-text">{{ 'general.search.close' | t }}</span>
+<div id="SearchDrawer" class="search-bar drawer drawer--top" role="dialog" aria-modal="true" aria-label="{{ 'general.search.placeholder' | t }}">
+  <div class="search-bar__table">
+    <div class="search-bar__table-cell search-bar__form-wrapper">
+      <form class="search search-bar__form" action="{{ routes.search_url }}" method="get" role="search">
+        <input class="search__input search-bar__input" type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" aria-label="{{ 'general.search.placeholder' | t }}">
+        <button class="search-bar__submit search__submit btn--link" type="submit">
+          {% include 'icon-search' %}
+          <span class="icon__fallback-text">{{ 'general.search.submit' | t }}</span>
         </button>
-      </div>
+      </form>
+    </div>
+    <div class="search-bar__table-cell text-right">
+      <button type="button" class="btn--link search-bar__close js-drawer-close">
+        {% include 'icon-close' %}
+        <span class="icon__fallback-text">{{ 'general.search.close' | t }}</span>
+      </button>
     </div>
   </div>
+</div>
 
-  {%- if settings.enable_ajax -%}
-    {% include 'cart-popup' %}
-  {%- endif -%}
+{%- if settings.enable_ajax -%}
+  {% include 'cart-popup' %}
+{%- endif -%}
 
-  {% section 'header' %}
+{% section 'header' %}
 
-  <div class="page-container" id="PageContainer">
+<div class="page-container" id="PageContainer">
 
-    <main class="main-content js-focus-hidden" id="MainContent" role="main" tabindex="-1">
-      {{ content_for_layout }}
-    </main>
+  <main class="main-content js-focus-hidden" id="MainContent" role="main" tabindex="-1">
+    {{ content_for_layout }}
+  </main>
 
-    {% section 'footer' %}
+  {% section 'footer' %}
 
-    <div id="slideshow-info" class="visually-hidden" aria-hidden="true">
-      {{- 'sections.slideshow.navigation_instructions' | t -}}
-    </div>
-
+  <div id="slideshow-info" class="visually-hidden" aria-hidden="true">
+    {{- 'sections.slideshow.navigation_instructions' | t -}}
   </div>
 
-  <ul hidden>
-    <li id="a11y-refresh-page-message">{{ 'general.accessibility.refresh_page' | t }}</li>
-    <li id="a11y-selection-message">{{ 'general.accessibility.selection_help' | t }}</li>
-  </ul>
+</div>
+
+<ul hidden>
+  <li id="a11y-refresh-page-message">{{ 'general.accessibility.refresh_page' | t }}</li>
+  <li id="a11y-selection-message">{{ 'general.accessibility.selection_help' | t }}</li>
+</ul>
 {% include 'spurit_po2_theme_snippet' %}
 
 <!-- Back in Stock helper snippet -->
@@ -190,10 +195,10 @@ _affirm_config = {
 <!-- End Back in Stock helper snippet -->
 
 <!--   Iterable snippet -->
-      <script type="text/javascript">
-                var customer_id = "{{customer.id}}";
-                var shopify_domain = "{{shop.permanent_domain}}";
-              </script>
+<script type="text/javascript">
+  var customer_id = "{{customer.id}}";
+  var shopify_domain = "{{shop.permanent_domain}}";
+</script>
 
 <!--   End Iterable Snippet -->
 {% include 'mw_fees_objects' %}</body>
