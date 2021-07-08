@@ -57,21 +57,7 @@
   </div>
 </div>
 {{ 'hide-map.js' | asset_url | script_tag }}
-<script>
-  $(function () {
-    $(".field__input-btn").click(function (event) {
-      setTimeout(function () {
-        if ($("#checkout_reduction_code:contains('BARRYS')")) {
-          $('.reduction-code').append("<p>Complimentary 3-months of FORME membership<p>");
-        } else {
-          alert('no');
-        }
-      }, 2000);
-      //  event.preventDefault();
-    });
-
-  });
-</script>
+{{ 'discount-desc.js' | asset_url | script_tag }}
 {{ tracking_code }}
 </body>
 </html>
