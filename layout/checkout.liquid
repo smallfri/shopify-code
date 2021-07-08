@@ -5,13 +5,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, user-scalable=0">
   <meta name="referrer" content="origin">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
   <title>{{ page_title }}</title>
   {{ content_for_header }}
   {{ checkout_stylesheets }}
   {{ checkout_scripts }}
-  {% comment %} Added maven code into version control {% endcomment %}
-  {% render 'checkout-calendar' %}
-  {{ 'checkout-calendar.css' | asset_url | stylesheet_tag }}
+
+    {% for line in checkout.line_items %}
+      {% if line.sku == "FOR10000" %}
+        {% render 'checkout-calendar' %}
+        {{ 'checkout-calendar.css' | asset_url | stylesheet_tag }}
+      {% endif %}
+    {% endfor %}
 
 </head>
 <body>
@@ -50,7 +56,8 @@
     </aside>
   </div>
 </div>
-
+{{ 'hide-map.js' | asset_url | script_tag }}
+{{ 'discount-desc.js' | asset_url | script_tag }}
 {{ tracking_code }}
 </body>
 </html>
