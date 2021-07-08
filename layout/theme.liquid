@@ -46,11 +46,11 @@
 
   {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
 
-  <script delay="150" data-sk="tooltip_parent" href="https://getmulberry.com/plugin/static/js/mulberry.js" rel="noopener noreferrer"></script>
+{#  <script delay="150" data-sk="tooltip_parent" href="https://getmulberry.com/plugin/static/js/mulberry.js" rel="noopener noreferrer"></script>#}
 
   <script async="async">
     document.addEventListener('mulberry-shopify:loaded', async () => {
-      if (window.location.href.indexOf('/cart') != -1) {
+      if (window.location.href.indexOf('/cart') !== -1) {
         await mulberryShop.cart.init();
         mulberryShop.cart.render();
       }
